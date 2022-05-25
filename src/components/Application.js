@@ -32,7 +32,7 @@ const interviewers = [
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
-  const [interviewer, setInterviewer] = userState("1")
+  const [interviewer, setInterviewer] = useState("1")
   return (
     <main className="layout">
       <section className="sidebar">
