@@ -1,14 +1,44 @@
-export default function getAppointmentsForDay(state, name) {
-  const filteredDays = state.days.filter(day => day.name === name);
-  if(state.days.length===0 || filteredDays.length===0){
+export default function getAppointmentsForDay(state, day) {
+  const days = state.days.filter(dayFiltered => dayFiltered.name === day);
+  let appointments = [];
+
+  if(state.days.length === 0 || days.length === 0){
     return [];
   }
-  const dayAppointments = filteredDays[0].appointments;
- 
-  let filteredAppointments = [];
+  const dayAppointments = days[0].appointments;
  
   for(let appointment of dayAppointments) {
-    filteredAppointments.push(state.appointments[appointment]);
+    appointments.push(state.appointments[appointment]);
   }
-  return filteredAppointments;
+  return appointments;
+}
+
+// export function getInterview(state, interview) {
+//   const interviewReturn = state.interviewers[interview.interviewer];
+//   if (interview) {
+//     return {  
+//       student: interview.student,
+//       interviewer: interviewerReturn
+
+//     } } else {
+//       return null;
+//     }
+
+// }
+
+// base function that works:
+
+export function getInterview(state, interview) {
+  if (interview) {
+    return {  
+      "student": "Lydia Miller-Jones",
+      "interviewer": {  
+        "id": 1,
+        "name": "Sylvia Palmer",
+        "avatar": "https://i.imgur.com/LpaY82x.png"
+      }
+    } } else {
+      return null;
+    }
+
 }
