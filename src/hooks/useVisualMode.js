@@ -3,10 +3,22 @@ import React, { useState } from "react";
 
 export function useVisualMode (initial) {
   const [mode, setMode] = useState(initial);
-  function transition (newMode) {
-    setMode(newMode)
+  const [history, setHistory] = useState([initial]);
 
+  function transition (newMode, replace = false) {
+    if (replace === true) {
+      history.pop();
+      setMode(history.slice(-1));
+    }
+    setMode(newMode);
+    history.push(newMode);
   }
-  return { mode, transition };
 
+  function back (prevMode) {
+    history.pop()
+    setMode (history.slice(-1).toString())
+  }
+
+  return { mode, transition, back };
 }
+
