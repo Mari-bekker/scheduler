@@ -64,6 +64,8 @@ storiesOf("Button", module)
       spots: 0,
     },
   ];
+
+
   
   storiesOf("DayList", module)
     .addParameters({
@@ -154,7 +156,7 @@ storiesOf("Button", module)
       .add("Confirm", () => <Confirm message={"Delete the appointment?"} onConfirm={action("onConfirm")} onCancel={action("onCancel")} />)
       .add("Status", () => <Status message={"Deleting"} />)
       .add("Error", () => <Error message={"Could not delete appointment."} onClose={action("onClose")} />)
-      .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
+      .add("Create", () => <Form interviewers={[interviewers]} onSave={action("onSave")} onCancel={action("onCancel")} />)
       .add("Edit", () => <Form student={"Mari Bekker"} interviewer={"2"} interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} />)
       .add("Appointment Empty", () => (
         <Fragment>
