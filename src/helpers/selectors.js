@@ -24,10 +24,8 @@ export function getInterview(state, interview) {
 }
 
 export function getInterviewersForDay(state, day) {
-  //const found = array1.find(element => element > 10);
   const foundDay = state.days.find(dayFiltered => dayFiltered.name === day);
   let interviewers = [];
-  console.log(state)
 
   if(state.days.length === 0 || !foundDay ){
     return [];
@@ -39,20 +37,3 @@ export function getInterviewersForDay(state, day) {
   }
   return interviewers;
 }
-
-
-// export function getInterviewersForDay(state, day) {
-//   const days = state.days.filter(dayFiltered => dayFiltered.name === day);
-//   let interviewers = [];
-//   console.log(state)
-
-//   if(state.days.length === 0 || days.length === 0){
-//     return [];
-//   }
-//   const dayAppointments = days[0].appointments;
- 
-//   for(let appointment of dayAppointments) {
-//     interviewers.push(state.appointments[appointment]);
-//   }
-//   return interviewers;
-// }
