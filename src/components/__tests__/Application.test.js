@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, prettyDOM, getByAltText, getByPlaceholderText } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, prettyDOM, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
 
@@ -38,8 +38,10 @@ describe("Application", () => {
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
 
-    const dayListItem = getAllByTestId(container, "dayListItem")[0];
-    await waitForElement(() => getByText(dayListItem, "no spots remaining"));
+    const day = getAllByTestId(container, "day").find(day =>
+      queryByText(day, "Monday")
+    );
+    await waitForElement(() => getByText(day, "no spots remaining"));
 
   })
 });
