@@ -13,7 +13,6 @@ import {
   queryByText,
   queryByAltText,
   waitForElementToBeRemoved,
-  getByDisplayValue,
 } from "@testing-library/react";
 
 import Application from "components/Application";
