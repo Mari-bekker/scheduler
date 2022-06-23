@@ -7,7 +7,6 @@ import {
   fireEvent,
   getByText,
   getAllByTestId,
-  prettyDOM,
   getByAltText,
   getByPlaceholderText,
   queryByText,

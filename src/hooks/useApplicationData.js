@@ -4,7 +4,7 @@ import axios from "axios";
 export default function useApplicationData() {
 
   function bookInterview(id, interview) {
-    //console.log(id, interview);
+    const isEditing = state.appointments[id].interview !== null
 
     const appointment = {
       ...state.appointments[id],
@@ -16,8 +16,10 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
+
+    // Update the number of spots when appointment is booked
     const days = state.days.map((day) =>
-      day.appointments.includes(id)
+      day.appointments.includes(id) && !isEditing
         ? { ...day, spots: day.spots - 1 }
         : { ...day }
     );
@@ -38,6 +40,7 @@ export default function useApplicationData() {
       [id]: appointment,
     };
 
+    // Update the number of spots when appointment is cancelled
     const days = state.days.map((day) =>
       day.appointments.includes(id)
         ? { ...day, spots: day.spots + 1 }
